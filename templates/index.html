@@ -1,12 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>{% block title %}{% endblock %}</title>
-</head>
-<body>
+{% extends 'base.html'%}
 
-  {% block body %}{% endblock %}
+{% block title %}
+    Главная страница
+{% endblock %}
 
-</body>
-</html>
+{% block body %}
+    <h1>Главная страница</h1>
+{% endblock %}
