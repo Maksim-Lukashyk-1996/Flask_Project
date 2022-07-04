@@ -47,10 +47,14 @@ def hello_world():
 def about():
     return render_template('about.html')
 
-@app.route('/user/<string:name>/<int:id>')
-def user(name, id):
-    return 'User page'+ ':' + name + '-' + str(id)
+@app.route('/create-article')
+def create_article():
+    return render_template('create-article.html')
 
 
 if __name__=='__main':
     app.run(debug=True)
+
+    # @app.route('/user/<string:name>/<int:id>')
+    # def user(name, id):
+    #     return 'User page'+ ':' + name + '-' + str(id)
