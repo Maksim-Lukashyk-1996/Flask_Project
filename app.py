@@ -56,7 +56,7 @@ def posts():
 
 
 @app.route('/posts/<int:id>')
-def posts_detail():
+def posts_detail(id):
     article = Article.query.get(id)
     return render_template('posts_detail.html', article=article)
 
