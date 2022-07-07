@@ -48,11 +48,17 @@ def hello_world():
 def about():
     return render_template('about.html')
 
-
+# desс()- Отвечает за отображение от самого нового, к старому.
 @app.route('/posts')
 def posts():
-    articles = Article.query.order_by(Article.date).all()
+    articles = Article.query.order_by(Article.date.desc()).all()
     return render_template('posts.html', articles=articles)
+
+
+@app.route('/posts/<int:id>')
+def posts_detail():
+    article = Article.query.get(id)
+    return render_template('posts_detail.html', article=article)
 
 @app.route('/create-article', methods=['POST', 'GET'])
 def create_article():
@@ -64,7 +70,7 @@ def create_article():
         try:
             db.session.add(article)
             db.session.commit()
-            return redirect('/')
+            return redirect('/posts')
         except:
             return 'При добавлении статьи произошла ошибка'
     else:
